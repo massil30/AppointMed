@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsivity/utils/theme_extention.dart';
 
 class Test extends StatefulWidget {
   const Test({super.key});
@@ -13,7 +14,14 @@ class _TestState extends State<Test> {
     var width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
-      body: SafeArea(child: Center(child: Text('Width: $width'))),
+      body: SafeArea(
+        child: Center(
+          child: Text(
+            'Width: $width',
+            style: TextStyle(color: context.primary),
+          ),
+        ),
+      ),
     );
   }
 }
