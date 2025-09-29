@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsivity/config/theme.dart';
 import 'package:responsivity/pages/splashscreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/utils/responsivity.dart';
 
 void main() async {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: theme,
-                home: const FirstScreen(),
+                home: const WelcomePage(),
               );
             },
           );
