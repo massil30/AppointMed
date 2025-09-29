@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:responsivity/utils/theme_extention.dart';
+
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  final VoidCallback? onBack;
+
+  const CustomAppBar({super.key, required this.title, this.onBack});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      title: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+          color: context.primary,
+        ),
+      ),
+      backgroundColor: context.theme.scaffoldBackgroundColor,
+      leading: Container(
+        margin: const EdgeInsets.only(left: 24),
+        child: Navigator.canPop(context)
+            ? Container(
+                margin: EdgeInsets.only(left: 24),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back_ios, color: context.primary),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              )
+            : null,
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}

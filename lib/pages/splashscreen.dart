@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/pages/welcomPage.dart';
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<FirstScreen> createState() => _FirstScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _FirstScreenState extends State<FirstScreen>
+class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
@@ -29,11 +31,8 @@ class _FirstScreenState extends State<FirstScreen>
     _controller.forward();
 
     // Navigate to HomeScreen after 3 seconds
-    Future.delayed(const Duration(seconds: 23), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomePage()),
-      );
+    Future.delayed(const Duration(seconds: 4), () {
+      context.go(RouteNames.welcome);
     });
   }
 
@@ -51,28 +50,30 @@ class _FirstScreenState extends State<FirstScreen>
         child: Center(
           child: FadeTransition(
             opacity: _fadeAnimation,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Logo
-                Image.asset('images/logo.png', width: 150.w, height: 150.h),
-                const SizedBox(height: 20),
-                // Title
-                Text(
-                  "Skin First",
-                  style: TextStyle(
-                    fontSize: 32.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Logo
+                  Image.asset('images/logo.png', width: 150.w, height: 150.h),
+                  const SizedBox(height: 20),
+                  // Title
+                  Text(
+                    "Skin First",
+                    style: TextStyle(
+                      fontSize: 32.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                // Description
-                Text(
-                  "Dermatology Center",
-                  style: TextStyle(fontSize: 16.sp, color: Colors.white),
-                ),
-              ],
+                  const SizedBox(height: 10),
+                  // Description
+                  Text(
+                    "Dermatology Center",
+                    style: TextStyle(fontSize: 16.sp, color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

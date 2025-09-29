@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsivity/config/routes/routes.dart';
 
 import 'package:responsivity/config/theme.dart';
 import 'package:responsivity/pages/splashscreen.dart';
@@ -41,10 +42,10 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             splitScreenMode: true,
             builder: (context, child) {
-              return MaterialApp(
+              return MaterialApp.router(
+                routerConfig: router,
                 debugShowCheckedModeBanner: false,
                 theme: theme,
-                home: const WelcomePage(),
               );
             },
           );
