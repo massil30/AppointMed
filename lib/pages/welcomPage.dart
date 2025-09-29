@@ -59,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        context.go(RouteNames.login);
+                        context.push(RouteNames.login);
                         // Your action
                       },
                       style: ElevatedButton.styleFrom(
@@ -88,7 +88,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        // Your action
+                        context.push(RouteNames.signup);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: context.secondary,

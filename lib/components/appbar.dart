@@ -23,14 +23,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Container(
         margin: const EdgeInsets.only(left: 24),
         child: Navigator.canPop(context)
-            ? Container(
-                margin: EdgeInsets.only(left: 24),
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: context.primary),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+            ? IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: context.primary),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               )
             : null,
       ),

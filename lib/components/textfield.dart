@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EmailField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String label;
   final String hint;
+  final TextInputType keyboardType;
+  final bool obscureText;
 
-  const EmailField({
+  const CustomTextField({
     super.key,
     this.controller,
     this.label = "Email or Mobile Number",
     this.hint = "example@example.com",
+    this.keyboardType = TextInputType.emailAddress,
+    this.obscureText = false,
   });
 
   @override
@@ -21,14 +25,16 @@ class EmailField extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             fontSize: 20,
-            color: Colors.grey[600],
+            color: Colors.black,
           ),
         ),
         const SizedBox(height: 8),
         TextFormField(
+          keyboardType: keyboardType,
           controller: controller,
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: Color(0xff809CFF), fontSize: 18),

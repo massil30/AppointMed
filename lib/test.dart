@@ -48,7 +48,7 @@ class Test extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Email Field (reusable)
-              const EmailField(),
+              const CustomTextField(),
 
               const SizedBox(height: 20),
 
