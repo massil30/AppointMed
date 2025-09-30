@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/textfield.dart';
 import 'package:responsivity/components/buttons.dart';
-import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class SignUp extends StatefulWidget {
@@ -15,6 +13,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -26,7 +25,6 @@ class _SignUpState extends State<SignUp> {
 
   List<Widget> get _fields {
     return [
-      // Title
       Text(
         "Create Account",
         style: TextStyle(
@@ -51,6 +49,12 @@ class _SignUpState extends State<SignUp> {
         label: "Full Name",
         hint: "Enter your full name",
         keyboardType: TextInputType.name,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your full name';
+          }
+          return null;
+        },
       ),
       const SizedBox(height: 20),
 
@@ -60,6 +64,15 @@ class _SignUpState extends State<SignUp> {
         label: "Email",
         hint: "example@email.com",
         keyboardType: TextInputType.emailAddress,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your email';
+          }
+          if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+            return 'Enter a valid email';
+          }
+          return null;
+        },
       ),
       const SizedBox(height: 20),
 
@@ -69,17 +82,22 @@ class _SignUpState extends State<SignUp> {
         label: "Phone Number",
         hint: "Enter your phone number",
         keyboardType: TextInputType.phone,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your phone number';
+          }
+          if (!RegExp(r'^\d{10,}$').hasMatch(value)) {
+            return 'Enter a valid phone number';
+          }
+          return null;
+        },
       ),
       const SizedBox(height: 20),
 
       // Date of Birth
       Text(
         "Date of Birth",
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
-          color: Colors.black,
-        ),
+        style: GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 14),
       ),
       const SizedBox(height: 8),
       GestureDetector(
@@ -104,6 +122,14 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
+      if (selectedDate == null)
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0, left: 4.0),
+          child: Text(
+            "Please select your date of birth",
+            style: TextStyle(color: Colors.red[700], fontSize: 12),
+          ),
+        ),
       const SizedBox(height: 20),
 
       // Password
@@ -113,6 +139,15 @@ class _SignUpState extends State<SignUp> {
         hint: "Enter your password",
         keyboardType: TextInputType.visiblePassword,
         obscureText: true,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter your password';
+          }
+          if (value.length < 6) {
+            return 'Password must be at least 6 characters';
+          }
+          return null;
+        },
       ),
       const SizedBox(height: 20),
 
@@ -123,6 +158,15 @@ class _SignUpState extends State<SignUp> {
         hint: "Re-enter your password",
         keyboardType: TextInputType.visiblePassword,
         obscureText: true,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please confirm your password';
+          }
+          if (value != passwordController.text) {
+            return 'Passwords do not match';
+          }
+          return null;
+        },
       ),
       const SizedBox(height: 32),
 
@@ -130,7 +174,14 @@ class _SignUpState extends State<SignUp> {
         child: CustomButton(
           text: 'Sign Up',
           onPressed: () {
-            // Handle sign up
+            if (_formKey.currentState!.validate() && selectedDate != null) {
+              // Handle sign up
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text('Signing up...')));
+            } else if (selectedDate == null) {
+              setState(() {});
+            }
           },
           width: MediaQuery.of(context).size.width - 180,
           height: 50,
@@ -147,7 +198,7 @@ class _SignUpState extends State<SignUp> {
           ),
           GestureDetector(
             onTap: () {
-              context.push(RouteNames.login);
+              Navigator.pop(context);
             },
             child: Text(
               "Log In",
@@ -184,9 +235,12 @@ class _SignUpState extends State<SignUp> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-          child: ListView.builder(
-            itemCount: _fields.length,
-            itemBuilder: (context, index) => _fields[index],
+          child: Form(
+            key: _formKey,
+            child: ListView.builder(
+              itemCount: _fields.length,
+              itemBuilder: (context, index) => _fields[index],
+            ),
           ),
         ),
       ),

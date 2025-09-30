@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final String hint;
   final TextInputType keyboardType;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.hint = "example@example.com",
     this.keyboardType = TextInputType.emailAddress,
     this.obscureText = false,
+    this.validator,
   });
 
   @override
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
           keyboardType: keyboardType,
           controller: controller,
           obscureText: obscureText,
+          validator: validator,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: Color(0xff809CFF), fontSize: 18),
