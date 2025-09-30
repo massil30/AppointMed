@@ -9,7 +9,6 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final Color? backgroundColor;
   final Color? textColor;
-  final double borderRadius;
   final double fontSize;
   final FontWeight fontWeight;
 
@@ -21,7 +20,6 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.backgroundColor,
     this.textColor,
-    this.borderRadius = 30,
     this.fontSize = 18,
     this.fontWeight = FontWeight.bold,
   });
@@ -38,7 +36,7 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
+            borderRadius: BorderRadius.circular(30.r),
           ),
         ),
         child: AutoSizeText(

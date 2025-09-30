@@ -25,14 +25,13 @@ class _LoginPageState extends State<LoginPage> {
       appBar: CustomAppBar(title: " Log In"),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.sp, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 24.r, vertical: 20),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
-
                 // Title
                 Text(
                   "Welcome",
@@ -70,7 +69,9 @@ class _LoginPageState extends State<LoginPage> {
                       return 'Please enter your email or mobile number';
                     }
                     // Simple email validation
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value) &&
+                    if (!RegExp(
+                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                        ).hasMatch(value) &&
                         !RegExp(r'^\d{10,}$').hasMatch(value)) {
                       return 'Enter a valid email or mobile number';
                     }
@@ -105,7 +106,9 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: "********",
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
                       ),
                       onPressed: () {
                         setState(() {

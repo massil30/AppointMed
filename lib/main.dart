@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsivity/config/routes/routes.dart';
@@ -11,7 +12,12 @@ import 'package:responsivity/utils/responsivity.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true, // disable this in release
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -43,6 +49,8 @@ class MyApp extends StatelessWidget {
             splitScreenMode: true,
             builder: (context, child) {
               return MaterialApp.router(
+                builder: DevicePreview.appBuilder,
+                locale: DevicePreview.locale(context),
                 routerConfig: router,
                 debugShowCheckedModeBanner: false,
                 theme: theme,
