@@ -1,24 +1,29 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
+import 'package:responsivity/features/chat/chatPage.dart';
+import 'package:responsivity/features/favorite/favoritepage.dart';
+import 'package:responsivity/features/profile/profile.dart';
+import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
-class RootPage extends StatefulWidget {
-  RootPage({Key? key}) : super(key: key);
+class BottomNavigationPage extends StatefulWidget {
+  BottomNavigationPage({Key? key}) : super(key: key);
 
   @override
-  _RootPageState createState() => _RootPageState();
+  _BottomNavigationPageState createState() => _BottomNavigationPageState();
 }
 
-class _RootPageState extends State<RootPage>
+class _BottomNavigationPageState extends State<BottomNavigationPage>
     with SingleTickerProviderStateMixin {
   late int currentPage;
   late TabController tabController;
+  List<Widget> pages = [HomePage(), Chatpage(), FavorisPage(), PorfilePage()];
 
   @override
   void initState() {
     currentPage = 0;
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
     tabController.animation?.addListener(() {
       final value = tabController.animation!.value.round();
       if (value != currentPage && mounted) {
@@ -61,11 +66,26 @@ class _RootPageState extends State<RootPage>
                   ),
                   insets: EdgeInsets.fromLTRB(16, 0, 16, 8),
                 ),
+                indicatorColor:
+                    Colors.transparent, // Remove default indicator color
+                indicatorWeight: 0, // Remove default indicator weight
                 tabs: [
-                  TabBarIcon(icon: Icons.home, selected: currentPage == 0),
-                  TabBarIcon(icon: Icons.chat, selected: currentPage == 1),
-                  TabBarIcon(icon: Icons.favorite, selected: currentPage == 2),
-                  TabBarIcon(icon: Icons.person, selected: currentPage == 3),
+                  TabBarIcon(
+                    icon: Icons.home_outlined,
+                    selected: currentPage == 0,
+                  ),
+                  TabBarIcon(
+                    icon: Icons.chat_outlined,
+                    selected: currentPage == 1,
+                  ),
+                  TabBarIcon(
+                    icon: Icons.favorite_outlined,
+                    selected: currentPage == 2,
+                  ),
+                  TabBarIcon(
+                    icon: Icons.person_outlined,
+                    selected: currentPage == 3,
+                  ),
                 ],
               ),
             ],
@@ -97,48 +117,15 @@ class _RootPageState extends State<RootPage>
           hideOnScroll: true,
           scrollOpposite: false,
           respectSafeArea: true,
-          onBottomBarHidden: () {},
-          onBottomBarShown: () {},
+
           body: (context, controller) => TabBarView(
             controller: tabController,
             dragStartBehavior: DragStartBehavior.down,
             physics: const BouncingScrollPhysics(),
-            children: List.generate(
-              4,
-              (index) => InfiniteListPage(
-                key: ValueKey('infinite_list_key#${index.toString()}'),
-                controller: controller,
-                color: Colors.grey,
-              ),
-            ),
+            children: pages,
           ),
         ),
       ),
-    );
-  }
-}
-
-class InfiniteListPage extends StatelessWidget {
-  final ScrollController controller;
-  final Color color;
-
-  const InfiniteListPage({
-    Key? key,
-    required this.controller,
-    required this.color,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: controller,
-      itemBuilder: (context, index) {
-        return Container(
-          height: 100,
-          color: index.isEven ? color.withOpacity(0.3) : color,
-          child: Center(child: Text("Item $index")),
-        );
-      },
     );
   }
 }

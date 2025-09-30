@@ -6,13 +6,16 @@ import 'package:responsivity/features/chat/chatPage.dart';
 import 'package:responsivity/features/favorite/favoritepage.dart';
 import 'package:responsivity/features/profile/profile.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
-import 'package:responsivity/pages/rootpage.dart';
+import 'package:responsivity/pages/bottom_navigation_bar.dart';
 import 'package:responsivity/pages/welcomPage.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: RouteNames.splash,
   routes: [
-    GoRoute(path: RouteNames.splash, builder: (context, state) => RootPage()),
+    GoRoute(
+      path: RouteNames.splash,
+      builder: (context, state) => BottomNavigationPage(),
+    ),
     GoRoute(
       path: RouteNames.welcome,
       builder: (context, state) => const WelcomePage(),
