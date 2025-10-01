@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+// Singeltone Media Query
+class MediaSize {
+  static late double width;
+  static late double height;
+
+  static void init(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    width = size.width;
+    height = size.height;
+  }
+}
+
 enum ScreenSize {
   small(300),
   normal(600),

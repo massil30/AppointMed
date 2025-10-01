@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/searchfield.dart';
+import 'package:responsivity/pages/homepage/home_widget/daily_list.dart';
 import 'package:responsivity/pages/homepage/home_widget/doctor_card.dart';
 import 'package:responsivity/pages/homepage/home_widget/home_appbar.dart';
+import 'package:responsivity/pages/homepage/home_widget/shcedule_card.dart';
 import 'package:responsivity/test.dart';
 import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
@@ -42,14 +44,15 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.only(left: 24.sp, right: 24.sp),
                 child: SearchField(),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               Container(
                 color: context.secondary,
-                padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
+                padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
                 child: Column(
                   children: [
                     horizontalDayList(context),
+                    SizedBox(height: 12.sp),
                     scheduleTimeline(context),
                   ],
                 ),
