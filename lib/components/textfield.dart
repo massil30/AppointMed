@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final String? Function(String?)? validator;
 
-  const CustomTextField({
+  CustomTextField({
     super.key,
     this.controller,
     this.label = "Email or Mobile Number",
@@ -27,8 +28,8 @@ class CustomTextField extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            fontSize: 20.sp,
             color: Colors.black,
           ),
         ),
