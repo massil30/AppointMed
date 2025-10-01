@@ -20,16 +20,12 @@ ScreenSize getScreenSize(BuildContext context) {
 // Reusabkle Code
 
 class ResponsiveLayout extends StatelessWidget {
-  final Widget mobile;
-  final Widget? tablet;
-  final Widget? desktop;
+  var mobile;
+  var tablet;
+  var desktop;
 
-  const ResponsiveLayout({
-    Key? key,
-    required this.mobile,
-    this.tablet,
-    this.desktop,
-  }) : super(key: key);
+  ResponsiveLayout({Key? key, required this.mobile, this.tablet, this.desktop})
+    : super(key: key);
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
