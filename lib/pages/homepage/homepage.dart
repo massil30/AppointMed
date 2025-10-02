@@ -27,8 +27,6 @@ final List<Map<String, String>> doctors = [
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

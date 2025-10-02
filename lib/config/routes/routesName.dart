@@ -18,5 +18,9 @@ class RouteNames {
   static const String chat = '/chat-people/chat';
   static const String chat_people = '/chat-people';
 
+  //Doctor
+  static const String doctors = '/doctors';
+  static const String doctors_details = '/doctor-details';
+
   static const String favorite = '/favorite';
 }
