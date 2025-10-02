@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/features/noteficaiton/notefication.dart';
 import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
@@ -51,7 +54,9 @@ Row home_appbar(BuildContext context) {
         backgroundColor: context.secondary,
         child: FittedBox(
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(RouteNames.notification);
+            },
             icon: Icon(
               Icons.notifications_outlined,
               color: Colors.black,

@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/ABC/Desktop/responsivity/linux/runner"
+    "cmake.sourceDirectory": "C:/Users/ABC/Desktop/responsivity/linux/runner",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

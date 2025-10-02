@@ -7,6 +7,9 @@ class SearchField extends StatelessWidget {
   final TextEditingController? controller;
   final String hintText;
   final ValueChanged<String>? onChanged;
+  final Color backgroundColor;
+  final suffixIcon;
+  final prefixIcon;
 
   const SearchField({
     super.key,
@@ -14,6 +17,9 @@ class SearchField extends StatelessWidget {
     this.controller,
     this.hintText = "",
     this.onChanged,
+    this.backgroundColor = const Color(0xFFCAD6FF),
+    this.suffixIcon = const Icon(Icons.search, color: Colors.blue),
+    this.prefixIcon,
   });
 
   @override
@@ -21,18 +27,19 @@ class SearchField extends StatelessWidget {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        color: context.secondary,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(23),
       ),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.filter_list, color: Colors.black),
+          if (suffixIcon == null)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(Icons.filter_list, color: Colors.black),
+              ),
             ),
-          ),
           Expanded(
             child: TextField(
               controller: controller,
@@ -50,11 +57,11 @@ class SearchField extends StatelessWidget {
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                 ),
-                contentPadding: const EdgeInsets.symmetric(
+                contentPadding: EdgeInsets.symmetric(
                   vertical: 8,
-                  horizontal: 8,
+                  horizontal: 12.sp,
                 ),
-                suffixIcon: Icon(Icons.search, color: context.primary),
+                suffixIcon: suffixIcon,
               ),
             ),
           ),

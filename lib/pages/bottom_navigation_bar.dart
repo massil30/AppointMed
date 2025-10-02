@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
 import 'package:responsivity/features/chat/chatPage.dart';
+import 'package:responsivity/features/chat/chat_people.dart';
 import 'package:responsivity/features/favorite/favoritepage.dart';
 import 'package:responsivity/features/profile/profile.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
@@ -18,7 +19,12 @@ class _BottomNavigationPageState extends State<BottomNavigationPage>
     with SingleTickerProviderStateMixin {
   late int currentPage;
   late TabController tabController;
-  List<Widget> pages = [HomePage(), Chatpage(), FavorisPage(), PorfilePage()];
+  List<Widget> pages = [
+    HomePage(),
+    ChatPeoplePage(),
+    FavorisPage(),
+    PorfilePage(),
+  ];
 
   @override
   void initState() {

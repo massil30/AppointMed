@@ -5,6 +5,7 @@ import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/Auth/login.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:responsivity/components/buttons.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -116,4 +117,65 @@ class WelcomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> showLogoutBottomSheet(BuildContext context, VoidCallback onLogout) async {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+    ),
+    backgroundColor: Colors.white,
+    builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              "Logout",
+              style: TextStyle(
+                color: Color(0xFF2B5ED8),
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              "are you sure you want to log out?",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 28),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    text: "Cancel",
+                    onPressed: () => Navigator.pop(context),
+                    backgroundColor: const Color(0xFFE6EEFF),
+                    textColor: const Color(0xFF2B5ED8),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: CustomButton(
+                    text: "Yes, Logout",
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onLogout();
+                    },
+                    backgroundColor: const Color(0xFF2B5ED8),
+                    textColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

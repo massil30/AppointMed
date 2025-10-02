@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/features/profile/profile_components/logout.dart';
 import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
@@ -61,13 +62,40 @@ class _PorfilePageState extends State<PorfilePage> {
             SizedBox(height: 24),
 
             // Profile options
-            _ProfileTile(icon: Icons.person, label: "Profile"),
-            _ProfileTile(icon: Icons.favorite, label: "Favorite"),
-            _ProfileTile(icon: Icons.credit_card, label: "Payment Method"),
-            _ProfileTile(icon: Icons.privacy_tip, label: "Privacy Policy"),
-            _ProfileTile(icon: Icons.settings, label: "Settings"),
-            _ProfileTile(icon: Icons.help_outline, label: "Help"),
-            _ProfileTile(icon: Icons.logout, label: "Logout"),
+            profileTile(icon: Icons.person, label: "Profile", context: context),
+            profileTile(
+              icon: Icons.favorite,
+              label: "Favorite",
+              context: context,
+            ),
+            profileTile(
+              icon: Icons.credit_card,
+              label: "Payment Method",
+              context: context,
+            ),
+            profileTile(
+              icon: Icons.privacy_tip,
+              label: "Privacy Policy",
+              context: context,
+              onTap: () => context.push(RouteNames.privacyPolicy),
+            ),
+            profileTile(
+              icon: Icons.settings,
+              label: "Settings",
+              context: context,
+            ),
+            profileTile(
+              icon: Icons.help_outline,
+              label: "Help",
+              context: context,
+              onTap: () => context.push(RouteNames.helpCenter),
+            ),
+            profileTile(
+              icon: Icons.logout,
+              label: "Logout",
+              context: context,
+              onTap: () => showLogoutBottomSheet(context),
+            ),
             SizedBox(height: 100.sp),
           ],
         ),
@@ -76,14 +104,15 @@ class _PorfilePageState extends State<PorfilePage> {
   }
 }
 
-class _ProfileTile extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  const _ProfileTile({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
+Widget profileTile({
+  required IconData icon,
+  required String label,
+  required BuildContext context,
+  VoidCallback? onTap,
+}) {
+  {
     return ListTile(
+      dense: false,
       leading: CircleAvatar(
         backgroundColor: context.secondary,
         child: Icon(icon, color: context.primary),
@@ -99,7 +128,7 @@ class _ProfileTile extends StatelessWidget {
       trailing: label == "Logout"
           ? null
           : Icon(Icons.chevron_right, color: context.secondary),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }
