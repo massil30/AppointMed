@@ -10,9 +10,11 @@ import 'package:responsivity/features/doctors/doctors.dart';
 import 'package:responsivity/features/favorite/favoritepage.dart';
 import 'package:responsivity/features/noteficaiton/notefication.dart'
     show NotificationPage;
+import 'package:responsivity/features/payment/paymentCard.dart';
+import 'package:responsivity/features/payment/paymentMethode.dart';
+import 'package:responsivity/features/payment/sucessPayment.dart';
 import 'package:responsivity/features/profile/editprofile.dart';
 import 'package:responsivity/features/profile/profile.dart';
-import 'package:responsivity/pages/bottom_navigation_bar.dart';
 import 'package:responsivity/pages/helpCenter/help_center.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/pages/privacy_policy.dart';
@@ -20,7 +22,7 @@ import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/test.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.doctors_details,
+  initialLocation: RouteNames.successPayment,
   routes: [
     GoRoute(path: RouteNames.splash, builder: (context, state) => Test()),
     GoRoute(
@@ -77,7 +79,19 @@ final GoRouter router = GoRouter(
       path: RouteNames.doctors_details,
       builder: (context, state) => DoctorDetails(),
     ),
-
+    //Payments
+    GoRoute(
+      path: RouteNames.paymentMethod,
+      builder: (context, state) => const Paymentmethode(),
+    ),
+    GoRoute(
+      path: RouteNames.addCard,
+      builder: (context, state) => const AddCard(),
+    ),
+    GoRoute(
+      path: RouteNames.successPayment,
+      builder: (context, state) => const PaymentSuccess(),
+    ),
     GoRoute(
       path: RouteNames.favorite,
       builder: (context, state) => const FavorisPage(),

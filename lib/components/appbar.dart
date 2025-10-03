@@ -5,8 +5,13 @@ import 'package:responsivity/utils/theme_extention.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? onBack;
-
-  const CustomAppBar({super.key, required this.title, this.onBack});
+  final Color backgroundcolor;
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.onBack,
+    this.backgroundcolor = const Color(0xFFFBFBFE),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: context.primary,
         ),
       ),
-      backgroundColor: context.theme.scaffoldBackgroundColor,
+      backgroundColor: backgroundcolor,
       leading: Container(
         margin: const EdgeInsets.only(left: 24),
         child: Navigator.canPop(context)

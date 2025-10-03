@@ -13,6 +13,8 @@ class RouteNames {
 
   //Payment
   static const String paymentMethod = '/payment-method';
+  static const String addCard = '/payment-method/add-card';
+  static const String successPayment = '/success';
 
   //Chat
   static const String chat = '/chat-people/chat';
