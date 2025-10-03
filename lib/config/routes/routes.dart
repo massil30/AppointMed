@@ -12,6 +12,7 @@ import 'package:responsivity/features/noteficaiton/notefication.dart'
     show NotificationPage;
 import 'package:responsivity/features/payment/paymentCard.dart';
 import 'package:responsivity/features/payment/paymentMethode.dart';
+import 'package:responsivity/features/payment/reviewPayment.dart';
 import 'package:responsivity/features/payment/sucessPayment.dart';
 import 'package:responsivity/features/profile/editprofile.dart';
 import 'package:responsivity/features/profile/profile.dart';
@@ -22,7 +23,7 @@ import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/test.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.successPayment,
+  initialLocation: RouteNames.paymentReview,
   routes: [
     GoRoute(path: RouteNames.splash, builder: (context, state) => Test()),
     GoRoute(
@@ -91,6 +92,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouteNames.successPayment,
       builder: (context, state) => const PaymentSuccess(),
+    ),
+    GoRoute(
+      path: RouteNames.paymentReview,
+      builder: (context, state) => const PaymentReview(),
     ),
     GoRoute(
       path: RouteNames.favorite,
