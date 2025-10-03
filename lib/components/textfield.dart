@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final int? maxLines;
 
   CustomTextField({
     super.key,
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.emailAddress,
     this.obscureText = false,
     this.validator,
+    this.maxLines,
   });
 
   @override
@@ -37,6 +39,7 @@ class CustomTextField extends StatelessWidget {
         TextFormField(
           keyboardType: keyboardType,
           controller: controller,
+          maxLines: maxLines,
           obscureText: obscureText,
           validator: validator,
           decoration: InputDecoration(

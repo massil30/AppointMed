@@ -103,6 +103,7 @@ class AppDialogs {
     String message = "Are you sure?",
     String confirmText = "Yes",
     String cancelText = "Cancel",
+    var onconfirm,
   }) async {
     return showDialog<bool>(
       context: context,
@@ -152,7 +153,7 @@ class AppDialogs {
                   const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context, true),
+                      onPressed: onconfirm,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: context.primary,
                         foregroundColor: Colors.white,

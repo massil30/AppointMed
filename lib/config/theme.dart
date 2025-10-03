@@ -10,7 +10,7 @@ class ThemeCubit extends Cubit<ThemeData> {
     scaffoldBackgroundColor: const Color(0xFFFBFBFE),
     colorScheme: const ColorScheme.light(
       primary: Colors.blue,
-      secondary: Color(0xFFCAD6FF),
+      secondary: Color(0xFFE3F2FD),
     ),
     textTheme: GoogleFonts.leagueSpartanTextTheme(), // Apply font
   );

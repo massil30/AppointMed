@@ -21,9 +21,16 @@ class RouteNames {
   static const String chat = '/chat-people/chat';
   static const String chat_people = '/chat-people';
 
+  //Schedule
+  static const String schedule = '/schedule';
+
   //Doctor
   static const String doctors = '/doctors';
   static const String doctors_details = '/doctor-details';
+  //Appointment
+  static const String appointement = '/appointement';
+  static const String cancelAppointement = '/appointement/cancel';
+  static const String reviewAppointement = '/appointement/review';
 
   static const String favorite = '/favorite';
 }

@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
   final Color? textColor;
   final double fontSize;
   final FontWeight fontWeight;
+  final int borderRadius;
 
   const CustomButton({
     super.key,
@@ -22,6 +23,7 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.fontSize = 18,
     this.fontWeight = FontWeight.w500,
+    this.borderRadius = 30,
   });
 
   @override
@@ -36,7 +38,7 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.r),
+            borderRadius: BorderRadius.circular(borderRadius.r),
           ),
         ),
         child: AutoSizeText(

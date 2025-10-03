@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/buttons.dart';
 import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/utils/common.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class Paymentmethode extends StatefulWidget {
@@ -53,7 +54,7 @@ class _PaymentmethodeState extends State<Paymentmethode> {
                       selectedIndex = index;
                     });
                   },
-                  child: PaymentOptionTile(
+                  child: OptionTile(
                     icon: paymentOptions[index]["icon"],
                     label: paymentOptions[index]["label"],
                     selected: selectedIndex == index,
@@ -75,55 +76,6 @@ class _PaymentmethodeState extends State<Paymentmethode> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PaymentOptionTile extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool selected;
-
-  const PaymentOptionTile({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.selected,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16.h),
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-      decoration: BoxDecoration(
-        color: context.secondary.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(12.r),
-        border: selected
-            ? Border.all(color: Theme.of(context).primaryColor, width: 2)
-            : null,
-      ),
-      child: Row(
-        children: [
-          Icon(icon, size: 22.sp, color: Theme.of(context).primaryColor),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500,
-                color: selected ? Theme.of(context).primaryColor : Colors.black,
-              ),
-            ),
-          ),
-          Icon(
-            selected ? Icons.radio_button_checked : Icons.radio_button_off,
-            color: Theme.of(context).primaryColor,
-            size: 20.sp,
-          ),
-        ],
       ),
     );
   }

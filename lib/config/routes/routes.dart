@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/Auth/login.dart';
 import 'package:responsivity/features/Auth/signup.dart';
+import 'package:responsivity/features/appointement/appointement.dart';
+import 'package:responsivity/features/appointement/cancelappointement.dart';
+import 'package:responsivity/features/appointement/reviewappoi.dart';
 import 'package:responsivity/features/chat/chatPage.dart';
 import 'package:responsivity/features/chat/chat_people.dart';
 import 'package:responsivity/features/doctors/doctorDetails.dart';
@@ -16,6 +19,7 @@ import 'package:responsivity/features/payment/reviewPayment.dart';
 import 'package:responsivity/features/payment/sucessPayment.dart';
 import 'package:responsivity/features/profile/editprofile.dart';
 import 'package:responsivity/features/profile/profile.dart';
+import 'package:responsivity/features/schedule/schedule.dart';
 import 'package:responsivity/pages/helpCenter/help_center.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/pages/privacy_policy.dart';
@@ -23,7 +27,7 @@ import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/test.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.paymentReview,
+  initialLocation: RouteNames.reviewAppointement,
   routes: [
     GoRoute(path: RouteNames.splash, builder: (context, state) => Test()),
     GoRoute(
@@ -70,6 +74,11 @@ final GoRouter router = GoRouter(
       builder: (context, state) => ChatPeoplePage(),
     ),
     GoRoute(path: RouteNames.chat, builder: (context, state) => ChatPage()),
+    //Schedule
+    GoRoute(
+      path: RouteNames.schedule,
+      builder: (context, state) => SchedulePage(),
+    ),
 
     // Doctors
     GoRoute(
@@ -96,6 +105,19 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouteNames.paymentReview,
       builder: (context, state) => const PaymentReview(),
+    ),
+    //Appointement
+    GoRoute(
+      path: RouteNames.appointement,
+      builder: (context, state) => const AllAppointmentsPage(),
+    ),
+    GoRoute(
+      path: RouteNames.cancelAppointement,
+      builder: (context, state) => const CancelAppointmentPage(),
+    ),
+    GoRoute(
+      path: RouteNames.reviewAppointement,
+      builder: (context, state) => const ReviewAppointement(),
     ),
     GoRoute(
       path: RouteNames.favorite,
