@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
+import 'package:responsivity/features/appointement/appointement.dart';
 import 'package:responsivity/features/chat/chatPage.dart';
 import 'package:responsivity/features/chat/chat_people.dart';
 import 'package:responsivity/features/favorite/favoritepage.dart';
@@ -22,7 +23,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage>
   List<Widget> pages = [
     HomePage(),
     ChatPeoplePage(),
-    FavorisPage(),
+    AllAppointmentsPage(),
     PorfilePage(),
   ];
 
@@ -85,7 +86,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage>
                     selected: currentPage == 1,
                   ),
                   TabBarIcon(
-                    icon: Icons.favorite_outlined,
+                    icon: Icons.calendar_month_outlined,
                     selected: currentPage == 2,
                   ),
                   TabBarIcon(

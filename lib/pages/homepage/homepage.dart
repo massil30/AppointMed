@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsivity/components/searchfield.dart';
 import 'package:responsivity/pages/homepage/home_widget/daily_list.dart';
 import 'package:responsivity/pages/homepage/home_widget/doctor_card.dart';
 import 'package:responsivity/pages/homepage/home_widget/home_appbar.dart';
 import 'package:responsivity/pages/homepage/home_widget/shcedule_card.dart';
-import 'package:responsivity/test.dart';
-import 'package:responsivity/utils/network_image_widget.dart';
+
 import 'package:responsivity/utils/theme_extention.dart';
+
+import '../../config/routes/routesName.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +18,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-final List<Map<String, String>> doctors = [
+final List<Map<String, String>> doctors_home = [
   {"name": "Dr. Ahmed", "specialty": "Cardiologist"},
   {"name": "Dr. Sarah", "specialty": "Dermatologist"},
   {"name": "Dr. Karim", "specialty": "Neurologist"},
@@ -40,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 24),
               Container(
                 margin: EdgeInsets.only(left: 24.sp, right: 24.sp),
-                child: SearchField(),
+                child: SearchField(prefixIcon: true),
               ),
               SizedBox(height: 16.h),
 
@@ -56,7 +58,34 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: 16),
-
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 24.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'All Doctors',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        context.push(RouteNames.doctors);
+                      },
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                          color: context.primary,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               doctors_list(),
             ],
           ),
@@ -71,7 +100,7 @@ class _HomePageState extends State<HomePage> {
         bool canFitTwo = constraints.maxWidth >= 900;
         return Wrap(
           children: [
-            for (var doctor in doctors)
+            for (var doctor in doctors_home)
               SizedBox(
                 width: canFitTwo
                     ? (constraints.maxWidth / 2) -

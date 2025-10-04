@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/utils/theme_extention.dart';
+import 'package:go_router/go_router.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 
 class DoctorCard extends StatelessWidget {
   final String name;
@@ -20,84 +22,89 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16.sp),
-      padding: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 12.sp),
-      decoration: BoxDecoration(
-        color: context.secondary, // background = soft primary
-        borderRadius: BorderRadius.circular(17.sp),
-      ),
-      child: Row(
-        children: [
-          // Doctor Image
-          CircleAvatar(radius: 32, backgroundImage: NetworkImage(imageUrl)),
-          const SizedBox(width: 12),
+    return InkWell(
+      onTap: () {
+        context.push(RouteNames.doctors_details);
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16.sp),
+        padding: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 12.sp),
+        decoration: BoxDecoration(
+          color: context.secondary, // background = soft primary
+          borderRadius: BorderRadius.circular(17.sp),
+        ),
+        child: Row(
+          children: [
+            // Doctor Image
+            CircleAvatar(radius: 32, backgroundImage: NetworkImage(imageUrl)),
+            const SizedBox(width: 12),
 
-          // Doctor Info
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(13.sp),
+            // Doctor Info
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(13.sp),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: TextStyle(
+                            color: context.primary,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          specialty,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black87,
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                  const SizedBox(height: 8),
+
+                  // Ratings + Reviews
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        name,
-                        style: TextStyle(
-                          color: context.primary,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        children: [
+                          _infoChip(Icons.star, "$rating"),
+                          const SizedBox(width: 6),
+                          _infoChip(Icons.chat_bubble_outline, "$reviews"),
+                        ],
                       ),
-                      Text(
-                        specialty,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          color: Colors.black87,
-                          fontSize: 12.sp,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _circleIcon(Icons.help_outline),
+                          const SizedBox(width: 6),
+                          _circleIcon(Icons.favorite, color: Colors.blue),
+                        ],
                       ),
                     ],
                   ),
-                ),
-
-                const SizedBox(height: 8),
-
-                // Ratings + Reviews
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        _infoChip(Icons.star, "$rating"),
-                        const SizedBox(width: 6),
-                        _infoChip(Icons.chat_bubble_outline, "$reviews"),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _circleIcon(Icons.help_outline),
-                        const SizedBox(width: 6),
-                        _circleIcon(Icons.favorite, color: Colors.blue),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          // Action buttons (icons on the right)
-        ],
+            // Action buttons (icons on the right)
+          ],
+        ),
       ),
     );
   }

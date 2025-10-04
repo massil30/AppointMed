@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/components/buttons.dart';
 import 'package:responsivity/components/dialogs.dart';
 import 'package:responsivity/components/searchfield.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/payment/review_C.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
@@ -75,11 +76,18 @@ class _PaymentReviewState extends State<PaymentReview> {
                 child: CustomButton(
                   width: double.infinity,
                   text: 'Pay Now',
-                  onPressed: () {
-                    AppDialogs.showSuccess(
-                      context,
-                      message: "Thanks you're appointement successfully booked",
-                    );
+                  onPressed: () async {
+                    // Show loading immediately
+                    AppDialogs.showLoading(context);
+
+                    // Wait 2 seconds
+                    await Future.delayed(const Duration(seconds: 2));
+
+                    // Close loading dialog (if needed)
+                    Navigator.of(context).pop();
+
+                    // Navigate to success page
+                    context.push(RouteNames.successPayment);
                   },
                 ),
               ),

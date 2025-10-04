@@ -17,7 +17,7 @@ class SearchField extends StatelessWidget {
     this.controller,
     this.hintText = "",
     this.onChanged,
-    this.backgroundColor = const Color(0xFFCAD6FF),
+    this.backgroundColor = const Color(0xFFE3F2FD),
     this.suffixIcon = const Icon(Icons.search, color: Colors.blue),
     this.prefixIcon,
   });
@@ -27,12 +27,12 @@ class SearchField extends StatelessWidget {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: context.secondary,
         borderRadius: BorderRadius.circular(23),
       ),
       child: Row(
         children: [
-          if (suffixIcon == null)
+          if (prefixIcon != null)
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(

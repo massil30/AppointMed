@@ -56,6 +56,7 @@ class _AllAppointmentsPageState extends State<AllAppointmentsPage> {
           ),
           SizedBox(height: 20.h),
           Expanded(child: _buildAppointmentList()),
+          SizedBox(height: 40.h),
         ],
       ),
     );

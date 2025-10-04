@@ -4,6 +4,8 @@ class RouteNames {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String home = '/home';
+  static const String home_bnv = '/bnv';
+
   //Profile
   static const String profile = '/profile';
   static const String editProfile = '/profile/edit';

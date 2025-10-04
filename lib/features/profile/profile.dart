@@ -67,6 +67,7 @@ class _PorfilePageState extends State<PorfilePage> {
               icon: Icons.favorite,
               label: "Favorite",
               context: context,
+              onTap: () => context.push(RouteNames.favorite),
             ),
             profileTile(
               icon: Icons.credit_card,

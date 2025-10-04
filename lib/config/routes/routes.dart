@@ -20,16 +20,25 @@ import 'package:responsivity/features/payment/sucessPayment.dart';
 import 'package:responsivity/features/profile/editprofile.dart';
 import 'package:responsivity/features/profile/profile.dart';
 import 'package:responsivity/features/schedule/schedule.dart';
+import 'package:responsivity/pages/bottom_navigation_bar.dart';
 import 'package:responsivity/pages/helpCenter/help_center.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/pages/privacy_policy.dart';
+import 'package:responsivity/pages/splashscreen.dart';
 import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/test.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.reviewAppointement,
+  initialLocation: RouteNames.favorite,
   routes: [
-    GoRoute(path: RouteNames.splash, builder: (context, state) => Test()),
+    GoRoute(
+      path: RouteNames.splash,
+      builder: (context, state) => SplashScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.home_bnv,
+      builder: (context, state) => BottomNavigationPage(),
+    ),
     GoRoute(
       path: RouteNames.welcome,
       builder: (context, state) => const WelcomePage(),
@@ -121,7 +130,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: RouteNames.favorite,
-      builder: (context, state) => const FavorisPage(),
+      builder: (context, state) => const FavoritePage(),
     ),
   ],
 );

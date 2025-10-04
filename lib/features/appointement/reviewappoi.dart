@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/buttons.dart';
@@ -14,6 +15,7 @@ class ReviewAppointement extends StatefulWidget {
 }
 
 class _ReviewAppointementState extends State<ReviewAppointement> {
+  var rating;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +50,12 @@ class _ReviewAppointementState extends State<ReviewAppointement> {
               'Dermato-Endocrinology ',
               style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w300),
             ),
-
+            StarRating(
+              color: context.primary,
+              rating: 3.5,
+              allowHalfRating: true,
+              onRatingChanged: (rating) => setState(() => this.rating = rating),
+            ),
             SizedBox(height: 16.h),
             CustomTextField(
               maxLines: 4,

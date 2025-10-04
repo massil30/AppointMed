@@ -1,15 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsivity/components/appbar.dart';
+import 'package:responsivity/components/searchfield.dart';
+import 'package:responsivity/features/doctors/doctor_component.dart';
+import 'package:responsivity/utils/theme_extention.dart';
+import 'package:responsivity/features/favorite/doctor_data.dart';
+import 'package:responsivity/features/favorite/doctor_model.dart';
 
-class FavorisPage extends StatefulWidget {
-  const FavorisPage({super.key});
+class FavoritePage extends StatefulWidget {
+  const FavoritePage({super.key});
 
   @override
-  State<FavorisPage> createState() => _FavorisPageState();
+  State<FavoritePage> createState() => _FavoritePageState();
 }
 
-class _FavorisPageState extends State<FavorisPage> {
+class _FavoritePageState extends State<FavoritePage> {
+  // Using the imported doctors list from doctor_data.dart
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: const CustomAppBar(title: "Favorites"),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Column(
+          children: [
+            SizedBox(height: 16.h),
+            const SearchField(hintText: "Search for a doctor"),
+            SizedBox(height: 16.h),
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth > 900) {
+                    // If screen width > 900, show GridView
+                    return GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 16.w,
+                        mainAxisSpacing: 16.h,
+                        childAspectRatio:
+                            3, // adjust ratio for card width/height
+                      ),
+                      itemCount: doctors.length,
+                      itemBuilder: (context, index) {
+                        final doctor = doctors[index];
+                        return Doctor_main_card(
+                          name: doctor.name,
+                          specialty: doctor.specialty,
+                          imageUrl: doctor.image,
+                        );
+                      },
+                    );
+                  } else {
+                    // If screen width ≤ 900, show ListView
+                    return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: doctors.length,
+                      itemBuilder: (context, index) {
+                        final doctor = doctors[index];
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 18.h),
+                          child: Doctor_main_card(
+                            name: doctor.name,
+                            specialty: doctor.specialty,
+                            imageUrl: doctor.image,
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
