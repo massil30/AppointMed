@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsivity/config/connectivity.dart';
 import 'package:responsivity/config/routes/routes.dart';
 
 import 'package:responsivity/config/theme.dart';
@@ -11,7 +12,7 @@ import 'package:responsivity/utils/responsivity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  ConnectivityService().initialize();
   runApp(
     DevicePreview(
       enabled: true, // disable this in release

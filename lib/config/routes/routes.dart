@@ -26,10 +26,9 @@ import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/pages/privacy_policy.dart';
 import 'package:responsivity/pages/splashscreen.dart';
 import 'package:responsivity/pages/welcomPage.dart';
-import 'package:responsivity/test.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.favorite,
+  initialLocation: RouteNames.home_bnv,
   routes: [
     GoRoute(
       path: RouteNames.splash,
