@@ -4,10 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/searchfield.dart';
 import 'package:responsivity/features/doctors/doctor_component.dart';
-import 'package:responsivity/features/favorite/bloc/favorit_event.dart';
 import 'package:responsivity/features/favorite/bloc/favorit_state.dart';
 import 'package:responsivity/features/favorite/bloc/favorite_bloc.dart';
-import 'package:responsivity/features/favorite/doctor_data.dart';
 import 'package:responsivity/features/favorite/doctor_model.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -31,6 +29,7 @@ class _FavoritePageState extends State<FavoritePage> {
 
           return favorite_items(favorites);
         }
+        return Text('Error');
       },
     );
   }
