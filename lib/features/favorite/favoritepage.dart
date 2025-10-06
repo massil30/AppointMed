@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/searchfield.dart';
 import 'package:responsivity/features/doctors/doctor_component.dart';
-import 'package:responsivity/utils/theme_extention.dart';
+import 'package:responsivity/features/favorite/bloc/favorit_event.dart';
+import 'package:responsivity/features/favorite/bloc/favorit_state.dart';
+import 'package:responsivity/features/favorite/bloc/favorite_bloc.dart';
 import 'package:responsivity/features/favorite/doctor_data.dart';
 import 'package:responsivity/features/favorite/doctor_model.dart';
 
@@ -19,6 +22,20 @@ class _FavoritePageState extends State<FavoritePage> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
+      builder: (context, state) {
+        if (state is FavoritesInitial) {
+          return Center(child: Text('The is no Favorites Items'));
+        } else if (state is FavoritesUpdated) {
+          final List<Doctor> favorites = state.favorites;
+
+          return favorite_items(favorites);
+        }
+      },
+    );
+  }
+
+  Scaffold favorite_items(List<Doctor> favorites) {
     return Scaffold(
       appBar: const CustomAppBar(title: "Favorites"),
       body: Padding(
@@ -42,9 +59,9 @@ class _FavoritePageState extends State<FavoritePage> {
                         childAspectRatio:
                             3, // adjust ratio for card width/height
                       ),
-                      itemCount: doctors.length,
+                      itemCount: favorites.length,
                       itemBuilder: (context, index) {
-                        final doctor = doctors[index];
+                        final doctor = favorites[index];
                         return Doctor_main_card(
                           name: doctor.name,
                           specialty: doctor.specialty,
@@ -56,9 +73,9 @@ class _FavoritePageState extends State<FavoritePage> {
                     // If screen width ≤ 900, show ListView
                     return ListView.builder(
                       physics: const BouncingScrollPhysics(),
-                      itemCount: doctors.length,
+                      itemCount: favorites.length,
                       itemBuilder: (context, index) {
-                        final doctor = doctors[index];
+                        final doctor = favorites[index];
                         return Padding(
                           padding: EdgeInsets.only(bottom: 18.h),
                           child: Doctor_main_card(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/profile/profile_components/logout.dart';
-import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
+import 'package:responsivity/config/theme.dart';
 
 class PorfilePage extends StatefulWidget {
   const PorfilePage({super.key});
@@ -17,6 +18,8 @@ class PorfilePage extends StatefulWidget {
 class _PorfilePageState extends State<PorfilePage> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: const CustomAppBar(title: "My Profile"),
       body: SingleChildScrollView(
@@ -56,7 +59,7 @@ class _PorfilePageState extends State<PorfilePage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24.sp,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.bodyLarge?.color,
               ),
             ),
             SizedBox(height: 24),
@@ -80,10 +83,31 @@ class _PorfilePageState extends State<PorfilePage> {
               context: context,
               onTap: () => context.push(RouteNames.privacyPolicy),
             ),
-            profileTile(
-              icon: Icons.settings,
-              label: "Settings",
-              context: context,
+            // Dark Mode toggle switch
+            ListTile(
+              dense: false,
+              leading: CircleAvatar(
+                backgroundColor: context.secondary,
+                child: Icon(
+                  isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                  color: context.primary,
+                ),
+              ),
+              title: Text(
+                "Dark Mode",
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: context.primary,
+                ),
+              ),
+              trailing: Switch(
+                value: isDarkMode,
+                activeColor: context.primary,
+                onChanged: (bool value) {
+                  context.read<ThemeCubit>().toggleTheme();
+                },
+              ),
             ),
             profileTile(
               icon: Icons.help_outline,

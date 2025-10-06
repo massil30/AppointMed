@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:responsivity/components/buttons.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 import 'package:responsivity/components/textfield.dart';
 import 'package:responsivity/components/appbar.dart';
@@ -107,7 +110,10 @@ class _SchedulePageState extends State<SchedulePage> {
                   SizedBox(height: 4.h),
 
                   // Days horizontal list
-                  daysHorizontalList(context, days, selectDay),
+                  Container(
+                    margin: EdgeInsets.only(left: 24.w),
+                    child: daysHorizontalList(context, days, selectDay),
+                  ),
                 ],
               ),
             ),
@@ -197,7 +203,18 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
             ),
 
-            SizedBox(height: 24.h),
+            SizedBox(height: 36.h),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 24.w),
+              child: CustomButton(
+                width: double.infinity,
+                text: 'Schedule Appointment',
+                onPressed: () {
+                  context.push(RouteNames.paymentReview);
+                },
+              ),
+            ),
+            SizedBox(height: 32.h),
           ],
         ),
       ),

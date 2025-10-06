@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/utils/theme_extention.dart';
+import 'package:go_router/go_router.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 
 class DoctorDetails extends StatefulWidget {
   const DoctorDetails({super.key});
@@ -162,7 +164,15 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _mainButton(context, "Schedule", Icons.calendar_today),
+                        _mainButton(
+                          context,
+                          "Schedule",
+                          Icons.calendar_today,
+                          () {
+                            context.push(RouteNames.schedule);
+                          },
+                        ),
+
                         SizedBox(width: 8.w),
                         _iconButton(context, Icons.info_outline),
                         SizedBox(width: 8.w),
@@ -272,9 +282,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
     );
   }
 
-  Widget _mainButton(BuildContext context, String text, IconData icon) {
+  Widget _mainButton(BuildContext context, String text, IconData icon, onTap) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: onTap,
       icon: Icon(icon, color: Colors.white, size: 18.sp),
       label: Text(
         text,
