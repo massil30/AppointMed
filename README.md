@@ -7,7 +7,7 @@ AppointMed allows users to browse doctors, schedule appointments, manage favorit
 ## 📱 Screenshots
 Clone Ui https://www.figma.com/design/2l2BSiGAfFSttceZ85OahL/Medical-Health-Mobile-App-Dermatology-App-Ui-Kit-Doctor-Mobile-App--Community-?node-id=21-455&t=nDSd7j3qa53S9lb1-0
 *Coming soon - Screenshots of the app in action*
-
+<img src="https://drive.google.com/drive/folders/1uA4BNVQpn3bcwgXzg5w_IxUmohocvshp" alt="Ai" width="400"/>
 ## ✨ Features
 
 ### 🔐 Authentication
