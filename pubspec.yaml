@@ -56,6 +56,8 @@ dependencies:
   flutter_rating: ^2.0.2
   equatable: ^2.0.7
 
+  flutter_localizations:
+    sdk: flutter
 flutter_native_splash:
   color: "#2260FF"                   # background color
   image: images/logo.png       # logo

@@ -1,22 +1,33 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsivity/config/connectivity.dart';
+import 'package:responsivity/config/language/language_cubit.dart';
 import 'package:responsivity/config/routes/routes.dart';
-
 import 'package:responsivity/config/theme.dart';
-import 'package:responsivity/pages/splashscreen.dart';
+import 'package:responsivity/features/favorite/bloc/favorite_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:responsivity/pages/welcomPage.dart';
 import 'package:responsivity/utils/responsivity.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ConnectivityService().initialize();
+
+  final languageCubit = LanguageCubit();
+  await languageCubit.loadLanguage();
   runApp(
     DevicePreview(
       enabled: true, // disable this in release
-      builder: (context) => const MyApp(),
+      builder: (context) => MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => FavoritesBloc()),
+
+          BlocProvider.value(value: languageCubit),
+        ],
+        child: const MyApp(),
+      ),
     ),
   );
 }
@@ -26,42 +37,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize screenSize = getScreenSize(context);
+    const designSize = Size(360, 690); // example design size
 
-    Size designSize;
-    switch (screenSize) {
-      case ScreenSize.small:
-        designSize = const Size(360, 690);
-        break;
-      case ScreenSize.normal:
-        designSize = const Size(768, 1024);
-        break;
-      case ScreenSize.large:
-        designSize = const Size(1440, 900);
-        break;
-    }
-    return BlocProvider<ThemeCubit>(
-      create: (_) => ThemeCubit(),
-      child: BlocBuilder<ThemeCubit, ThemeData>(
-        builder: (context, theme) {
-          return ScreenUtilInit(
-            designSize: designSize,
-            minTextAdapt: true,
-            splitScreenMode: true,
-            builder: (context, child) {
-              MediaSize.init(context);
+    return BlocBuilder<ThemeCubit, ThemeData>(
+      builder: (context, theme) {
+        return BlocBuilder<LanguageCubit, Locale>(
+          builder: (context, locale) {
+            return ScreenUtilInit(
+              designSize: designSize,
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
+                MediaSize.init(context);
 
-              return MaterialApp.router(
-                builder: DevicePreview.appBuilder,
-                locale: DevicePreview.locale(context),
-                routerConfig: router,
-                debugShowCheckedModeBanner: false,
-                theme: theme,
-              );
-            },
-          );
-        },
-      ),
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  builder: DevicePreview.appBuilder,
+                  locale: locale, // 👈 handled by LanguageCubit
+                  supportedLocales: const [Locale('en'), Locale('fr')],
+                  localizationsDelegates: const [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  routerConfig: router,
+                  theme: theme,
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 }

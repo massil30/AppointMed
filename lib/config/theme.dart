@@ -17,10 +17,10 @@ class ThemeCubit extends Cubit<ThemeData> {
 
   static final _darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF0D1B2A),
+    scaffoldBackgroundColor: const Color(0xFF121212), // dark background
     colorScheme: const ColorScheme.dark(
-      primary: Color.fromARGB(255, 6, 37, 114),
-      secondary: Color.fromARGB(255, 44, 131, 4),
+      primary: Colors.blue, // primary color stays
+      secondary: Color(0xFF1565C0), // darker accent for dark mode
     ),
     textTheme: GoogleFonts.leagueSpartanTextTheme(ThemeData.dark().textTheme),
   );

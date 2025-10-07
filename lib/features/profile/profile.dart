@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsivity/components/appbar.dart';
+import 'package:responsivity/config/language/languageDialog.dart';
 import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/profile/profile_components/logout.dart';
 import 'package:responsivity/utils/theme_extention.dart';
@@ -73,8 +74,9 @@ class _PorfilePageState extends State<PorfilePage> {
               onTap: () => context.push(RouteNames.favorite),
             ),
             profileTile(
-              icon: Icons.credit_card,
-              label: "Payment Method",
+              onTap: () => showLanguageDialog(context),
+              icon: Icons.language,
+              label: "Select Language",
               context: context,
             ),
             profileTile(

@@ -7,6 +7,7 @@ import 'package:responsivity/features/doctors/doctor_component.dart';
 import 'package:responsivity/features/favorite/bloc/favorit_state.dart';
 import 'package:responsivity/features/favorite/bloc/favorite_bloc.dart';
 import 'package:responsivity/features/favorite/doctor_model.dart';
+import 'package:responsivity/utils/theme_extention.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -23,7 +24,28 @@ class _FavoritePageState extends State<FavoritePage> {
     return BlocBuilder<FavoritesBloc, FavoritesState>(
       builder: (context, state) {
         if (state is FavoritesInitial) {
-          return Center(child: Text('The is no Favorites Items'));
+          return Scaffold(
+            appBar: const CustomAppBar(title: "Favorites"),
+
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.hourglass_empty,
+                    size: 100.sp,
+                    color: context.primary,
+                  ),
+                  SizedBox(height: 36.h),
+                  Text(
+                    'The is no Favorites Items',
+                    style: TextStyle(fontSize: 18.sp),
+                  ),
+                ],
+              ),
+            ),
+          );
         } else if (state is FavoritesUpdated) {
           final List<Doctor> favorites = state.favorites;
 

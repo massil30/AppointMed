@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsivity/config/language/language_cubit.dart';
+import 'package:responsivity/config/theme.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 Future<String?> showLanguageDialog(BuildContext context) async {
@@ -28,7 +31,10 @@ Future<String?> showLanguageDialog(BuildContext context) async {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Navigator.pop(context, 'en'),
+                onPressed: () {
+                  context.read<LanguageCubit>().toggleLanguage();
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFE6EEFF),
                   foregroundColor: context.primary,
@@ -56,7 +62,10 @@ Future<String?> showLanguageDialog(BuildContext context) async {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Navigator.pop(context, 'fr'),
+                onPressed: () {
+                  context.read<LanguageCubit>().toggleLanguage();
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFE6EEFF),
                   foregroundColor: context.primary,

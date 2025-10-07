@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:responsivity/config/language/language_cubit.dart';
+import 'package:responsivity/config/language/translation.dart';
 import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/noteficaiton/notefication.dart';
 import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 Row home_appbar(BuildContext context) {
+  final locale = context.watch<LanguageCubit>().state;
+  final texts = translations[locale.languageCode]!;
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -35,7 +40,7 @@ Row home_appbar(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hi, WelcomeBack",
+                texts['welcome']!,
                 style: TextStyle(
                   fontWeight: FontWeight.w100,
                   fontSize: 12.sp,

@@ -37,7 +37,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     Row(
                       children: [
                         CircleAvatar(
-                          radius: 60.r,
+                          radius: 70.r,
                           backgroundImage: NetworkImage(
                             "https://randomuser.me/api/portraits/men/10.jpg",
                           ),
@@ -58,8 +58,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     CircleAvatar(
                                       backgroundColor: context.secondary,

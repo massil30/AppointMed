@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/features/favorite/bloc/favorit_event.dart';
+import 'package:responsivity/features/favorite/bloc/favorit_state.dart';
+import 'package:responsivity/features/favorite/bloc/favorite_bloc.dart';
+import 'package:responsivity/features/favorite/doctor_model.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class Doctor_main_card extends StatelessWidget {
@@ -71,10 +76,53 @@ class Doctor_main_card extends StatelessWidget {
                       _doctorIconButton(context, Icons.info_outline),
 
                       SizedBox(width: 4.w),
-                      _doctorIconButton(
-                        context,
-                        Icons.favorite_border,
-                        color: context.primary,
+                      BlocBuilder<FavoritesBloc, FavoritesState>(
+                        builder: (context, state) {
+                          bool isFavorite = false;
+
+                          // Check if the doctor is already in favorites
+                          if (state is FavoritesUpdated) {
+                            isFavorite = state.favorites.any(
+                              (item) => item.name == name,
+                            );
+                          }
+
+                          return InkWell(
+                            onTap: () {
+                              final bloc = context.read<FavoritesBloc>();
+
+                              if (isFavorite) {
+                                bloc.add(
+                                  RemoveFavorite(
+                                    Doctor(
+                                      name: name,
+                                      specialty: specialty,
+                                      image: imageUrl,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                bloc.add(
+                                  AddFavorite(
+                                    Doctor(
+                                      name: name,
+                                      specialty: specialty,
+                                      image: imageUrl,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            child: _doctorIconButton(
+                              context,
+                              // Change icon depending on favorite state
+                              isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: isFavorite ? Colors.red : context.primary,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
