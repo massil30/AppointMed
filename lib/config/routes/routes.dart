@@ -3,16 +3,17 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/features/Auth/login.dart';
 import 'package:responsivity/features/Auth/signup.dart';
-import 'package:responsivity/features/appointement/appointement.dart';
-import 'package:responsivity/features/appointement/cancelappointement.dart';
-import 'package:responsivity/features/appointement/reviewappoi.dart';
+import 'package:responsivity/features/appointment/appointement.dart';
+import 'package:responsivity/features/appointment/cancelappointement.dart';
+import 'package:responsivity/features/appointment/reviewappoi.dart';
+
 import 'package:responsivity/features/chat/chatPage.dart';
 import 'package:responsivity/features/chat/chat_people.dart';
-import 'package:responsivity/features/doctors/doctorDetails.dart';
+import 'package:responsivity/features/doctors/doctor_details_page.dart';
 import 'package:responsivity/features/doctors/doctors.dart';
-import 'package:responsivity/features/favorite/favoritepage.dart';
-import 'package:responsivity/features/noteficaiton/notefication.dart'
-    show NotificationPage;
+import 'package:responsivity/features/favorite/favorites_page.dart';
+import 'package:responsivity/features/notification/notification.dart';
+
 import 'package:responsivity/features/payment/paymentCard.dart';
 import 'package:responsivity/features/payment/paymentMethode.dart';
 import 'package:responsivity/features/payment/reviewPayment.dart';

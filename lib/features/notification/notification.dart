@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
-import 'package:responsivity/features/noteficaiton/nottification_widget.dart';
+import 'package:responsivity/features/notification/notification_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class NotificationPage extends StatelessWidget {

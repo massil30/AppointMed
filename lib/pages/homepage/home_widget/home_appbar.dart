@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/config/language/language_cubit.dart';
 import 'package:responsivity/config/language/translation.dart';
 import 'package:responsivity/config/routes/routesName.dart';
-import 'package:responsivity/features/noteficaiton/notefication.dart';
+import 'package:responsivity/features/notification/notification.dart';
 import 'package:responsivity/utils/network_image_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 

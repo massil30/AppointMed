@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:responsivity/components/toast.dart';
 
 class ConnectivityService {
   static final ConnectivityService _instance = ConnectivityService._internal();
@@ -32,40 +33,21 @@ class ConnectivityService {
 
     if (!isConnected && _wasConnected) {
       // Connection lost
-      _showToast(
+      showToast(
         "No Internet Connection",
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        icon: Icons.wifi_off,
       );
     } else if (isConnected && !_wasConnected) {
       // Connection restored
-      _showToast(
+      showToast(
         "Internet Connection Restored",
         backgroundColor: Colors.green,
         textColor: Colors.white,
-        icon: Icons.wifi,
       );
     }
 
     _wasConnected = isConnected;
-  }
-
-  void _showToast(
-    String message, {
-    required Color backgroundColor,
-    required Color textColor,
-    required IconData icon,
-  }) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.TOP,
-      timeInSecForIosWeb: 3,
-      backgroundColor: backgroundColor,
-      textColor: textColor,
-      fontSize: 16.0,
-    );
   }
 
   void dispose() {

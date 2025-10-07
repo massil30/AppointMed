@@ -59,61 +59,81 @@ class _FavoritePageState extends State<FavoritePage> {
   Scaffold favorite_items(List<Doctor> favorites) {
     return Scaffold(
       appBar: const CustomAppBar(title: "Favorites"),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
-          children: [
-            SizedBox(height: 16.h),
-            const SearchField(hintText: "Search for a doctor"),
-            SizedBox(height: 16.h),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  if (constraints.maxWidth > 900) {
-                    // If screen width > 900, show GridView
-                    return GridView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16.w,
-                        mainAxisSpacing: 16.h,
-                        childAspectRatio:
-                            3, // adjust ratio for card width/height
-                      ),
-                      itemCount: favorites.length,
-                      itemBuilder: (context, index) {
-                        final doctor = favorites[index];
-                        return Doctor_main_card(
-                          name: doctor.name,
-                          specialty: doctor.specialty,
-                          imageUrl: doctor.image,
-                        );
+      body: favorites.isEmpty
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.hourglass_empty,
+                    size: 100.sp,
+                    color: context.primary,
+                  ),
+                  SizedBox(height: 36.h),
+                  Text(
+                    'The is no Favorites Items',
+                    style: TextStyle(fontSize: 18.sp),
+                  ),
+                ],
+              ),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                children: [
+                  SizedBox(height: 16.h),
+                  const SearchField(hintText: "Search for a doctor"),
+                  SizedBox(height: 16.h),
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        if (constraints.maxWidth > 900) {
+                          // If screen width > 900, show GridView
+                          return GridView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 16.w,
+                                  mainAxisSpacing: 16.h,
+                                  childAspectRatio:
+                                      3, // adjust ratio for card width/height
+                                ),
+                            itemCount: favorites.length,
+                            itemBuilder: (context, index) {
+                              final doctor = favorites[index];
+                              return Doctor_main_card(
+                                name: doctor.name,
+                                specialty: doctor.specialty,
+                                imageUrl: doctor.image,
+                              );
+                            },
+                          );
+                        } else {
+                          // If screen width ≤ 900, show ListView
+                          return ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: favorites.length,
+                            itemBuilder: (context, index) {
+                              final doctor = favorites[index];
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 18.h),
+                                child: Doctor_main_card(
+                                  name: doctor.name,
+                                  specialty: doctor.specialty,
+                                  imageUrl: doctor.image,
+                                ),
+                              );
+                            },
+                          );
+                        }
                       },
-                    );
-                  } else {
-                    // If screen width ≤ 900, show ListView
-                    return ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: favorites.length,
-                      itemBuilder: (context, index) {
-                        final doctor = favorites[index];
-                        return Padding(
-                          padding: EdgeInsets.only(bottom: 18.h),
-                          child: Doctor_main_card(
-                            name: doctor.name,
-                            specialty: doctor.specialty,
-                            imageUrl: doctor.image,
-                          ),
-                        );
-                      },
-                    );
-                  }
-                },
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

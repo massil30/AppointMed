@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/buttons.dart';
-import 'package:responsivity/features/appointement/appoi_cards.dart';
-import 'package:responsivity/features/appointement/data_appoin.dart';
-import 'package:responsivity/features/appointement/appoin_widget/tab_button.dart';
+import 'package:responsivity/features/appointment/appoin_widget/tab_button.dart';
+import 'package:responsivity/features/appointment/appointment_cards.dart';
+import 'package:responsivity/features/appointment/data_appoin.dart';
+
 import 'package:responsivity/utils/theme_extention.dart';
 
 class AllAppointmentsPage extends StatefulWidget {

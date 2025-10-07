@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
-import 'package:responsivity/features/appointement/appointement.dart';
+import 'package:responsivity/features/appointment/appointement.dart';
 import 'package:responsivity/features/chat/chatPage.dart';
 import 'package:responsivity/features/chat/chat_people.dart';
-import 'package:responsivity/features/favorite/favoritepage.dart';
+import 'package:responsivity/features/favorite/favorites_page.dart';
 import 'package:responsivity/features/profile/profile.dart';
 import 'package:responsivity/pages/homepage/homepage.dart';
 import 'package:responsivity/utils/theme_extention.dart';
