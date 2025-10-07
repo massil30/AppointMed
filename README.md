@@ -5,7 +5,7 @@
 AppointMed allows users to browse doctors, schedule appointments, manage favorites, and handle payments seamlessly across multiple platforms with responsive design.
 
 ## 📱 Screenshots
-
+Clone Ui https://www.figma.com/design/2l2BSiGAfFSttceZ85OahL/Medical-Health-Mobile-App-Dermatology-App-Ui-Kit-Doctor-Mobile-App--Community-?node-id=21-455&t=nDSd7j3qa53S9lb1-0
 *Coming soon - Screenshots of the app in action*
 
 ## ✨ Features
@@ -82,19 +82,16 @@ go_router: ^16.2.4
 # Responsive Design
 flutter_screenutil: ^5.9.3
 responsive_framework: ^1.5.1
-flutter_adaptive: ^4.1.0
-sizer: ^3.1.3
+
+
 
 # UI Components
-auto_size_text: ^3.0.0
 cached_network_image: ^3.4.1
 google_fonts: ^6.3.2
-flutter_hooks: ^0.21.3+1
 
 # Utilities
 connectivity_plus: ^7.0.0
 fluttertoast: ^9.0.0
-path_provider: ^2.1.5
 
 # Development
 device_preview: ^1.3.1
@@ -111,8 +108,7 @@ u_credit_card: ^1.4.0
 # Ratings & Reviews
 flutter_rating: ^2.0.2
 
-# Native Splash Screen
-flutter_native_splash: ^2.4.6
+
 ```
 
 ## 🚀 Getting Started
@@ -305,72 +301,20 @@ lib/
 ### State Management
 - Use BLoC for complex state
 - Use Cubit for simple state
-- Implement proper error states
-- Add loading states
 
-## 🧪 Testing
-
-```bash
-# Run unit tests
-flutter test
-
-# Run widget tests
-flutter test test/widget_test.dart
-
-# Run integration tests
-flutter drive --target=test_driver/app.dart
-```
 
 ## 📱 Platform Support
 
 - ✅ **Android** (API 21+)
-- ✅ **iOS** (iOS 11+)
-- ✅ **Web** (Chrome, Firefox, Safari)
-- ✅ **Desktop** (Windows, macOS, Linux)
 
-## 🚀 Deployment
 
-### Android
-```bash
-flutter build apk --release
-flutter build appbundle --release
-```
 
-### iOS
-```bash
-flutter build ios --release
-```
-
-### Web
-```bash
-flutter build web --release
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Support
 
-- **Email**: support@appointmed.com
-- **Issues**: [GitHub Issues](https://github.com/yourusername/appointmed/issues)
-- **Documentation**: [Wiki](https://github.com/yourusername/appointmed/wiki)
 
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- BLoC library for state management
-- ScreenUtil for responsive design
-- All contributors and testers
-
----
 
 **Made with ❤️ using Flutter**
