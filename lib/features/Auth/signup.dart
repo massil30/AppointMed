@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/textfield.dart';
 import 'package:responsivity/components/buttons.dart';
+import 'package:responsivity/features/Auth/auth_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class SignUp extends StatefulWidget {
@@ -191,28 +192,10 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
       const SizedBox(height: 30),
-
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Already have an account? ",
-            style: GoogleFonts.poppins(fontSize: 13),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              "Log In",
-              style: GoogleFonts.poppins(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: Colors.blue,
-              ),
-            ),
-          ),
-        ],
+      AuthFooter(
+        normalText: "You already have an account?",
+        actionText: 'Login',
+        onActionTap: () {},
       ),
     ];
   }

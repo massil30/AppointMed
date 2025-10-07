@@ -7,6 +7,7 @@ import 'package:responsivity/components/appbar.dart';
 import 'package:responsivity/components/dialogs.dart';
 import 'package:responsivity/components/textfield.dart';
 import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/features/Auth/auth_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class LoginPage extends StatefulWidget {
@@ -193,57 +194,21 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 20),
 
                 // Social Buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _socialButton(Icons.g_mobiledata, Colors.red),
-                    const SizedBox(width: 16),
-                    _socialButton(Icons.facebook, Colors.blue),
-                    const SizedBox(width: 16),
-                    _socialButton(Icons.fingerprint, Colors.green),
-                  ],
-                ),
+                Login3edParty(),
 
                 const SizedBox(height: 30),
 
                 // Sign Up
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don’t have an account? ",
-                      style: GoogleFonts.poppins(fontSize: 13),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        "Sign Up",
-                        style: GoogleFonts.poppins(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
+                AuthFooter(
+                  normalText: "You don't have an account?",
+                  actionText: 'SignUp',
+                  onActionTap: () {},
                 ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  // Reusable Social Button
-  Widget _socialButton(IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color.withOpacity(0.1),
-      ),
-      child: Icon(icon, size: 28, color: color),
     );
   }
 }
