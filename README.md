@@ -7,7 +7,29 @@ AppointMed allows users to browse doctors, schedule appointments, manage favorit
 ## 📱 Screenshots
 Clone Ui https://www.figma.com/design/2l2BSiGAfFSttceZ85OahL/Medical-Health-Mobile-App-Dermatology-App-Ui-Kit-Doctor-Mobile-App--Community-?node-id=21-455&t=nDSd7j3qa53S9lb1-0
 *Coming soon - Screenshots of the app in action*
-![SplashScreen](https://github.com/user-attachments/assets/6dda532f-61d1-4462-ba5a-d32382450e06)
+### Splash Screen
+<img src="https://github.com/user-attachments/assets/6dda532f-61d1-4462-ba5a-d32382450e06" alt="SplashScreen" width="250"/>
+
+### Login Page
+<img src="https://github.com/user-attachments/assets/90e51827-8764-46ed-8a55-1b88d0ada41a" alt="LoginPage" width="250"/>
+
+### Home Page
+<img src="https://github.com/user-attachments/assets/ca07d0e1-f518-45eb-a36b-466e46d9f44c" alt="HomePage" width="250"/>
+
+### Chat
+<img src="https://github.com/user-attachments/assets/e7a701f2-a3ff-4c36-b834-3300d110320a" alt="Chat" width="250"/>
+
+### Appointment
+<img src="https://github.com/user-attachments/assets/6c943de6-176b-4a18-86ba-f237a0189274" alt="Appointment" width="250"/>
+
+### Payment Method
+<img src="https://github.com/user-attachments/assets/b0b079ab-7330-4f7b-87f6-a66f323af519" alt="PaymentMethod" width="250"/>
+
+### Profile
+<img src="https://github.com/user-attachments/assets/f108f497-773d-4735-8356-e6c1e79064f7" alt="Profile" width="250"/>
+
+### Schedule
+<img src="https://github.com/user-attachments/assets/59eab358-b4ce-4f01-bbca-07ca54758194" alt="Schedule" width="250"/>
 
 ## ✨ Features
 
