@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               doctors_list(),
+              SizedBox(height: 45.h),
             ],
           ),
         ),

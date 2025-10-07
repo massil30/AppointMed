@@ -73,6 +73,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage>
                   ),
                   insets: EdgeInsets.fromLTRB(16, 0, 16, 8),
                 ),
+                dividerColor: Colors.transparent,
                 indicatorColor:
                     Colors.transparent, // Remove default indicator color
                 indicatorWeight: 0, // Remove default indicator weight

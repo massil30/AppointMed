@@ -29,7 +29,7 @@ import 'package:responsivity/pages/splashscreen.dart';
 import 'package:responsivity/pages/welcomPage.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.splash,
+  initialLocation: RouteNames.home_bnv,
   routes: [
     GoRoute(
       path: RouteNames.splash,

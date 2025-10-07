@@ -18,7 +18,7 @@ void main() async {
   await languageCubit.loadLanguage();
   runApp(
     DevicePreview(
-      enabled: true, // disable this in release
+      enabled: false, // disable this in release
       builder: (context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => ThemeCubit()),
