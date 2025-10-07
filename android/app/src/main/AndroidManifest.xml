@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Internat -->
+<uses-permission android:name="android.permission.INTERNET"/>
+
 <!-- Audio recording -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 

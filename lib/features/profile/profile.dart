@@ -103,12 +103,18 @@ class _PorfilePageState extends State<PorfilePage> {
                   color: context.primary,
                 ),
               ),
-              trailing: Switch(
-                value: isDarkMode,
-                activeColor: context.primary,
-                onChanged: (bool value) {
-                  context.read<ThemeCubit>().toggleTheme();
-                },
+              trailing: SizedBox(
+                height: 40,
+                width: 60,
+                child: FittedBox(
+                  child: Switch(
+                    value: isDarkMode,
+                    activeColor: context.primary,
+                    onChanged: (bool value) {
+                      context.read<ThemeCubit>().toggleTheme();
+                    },
+                  ),
+                ),
               ),
             ),
             profileTile(

@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:responsivity/components/buttons.dart';
 import 'package:responsivity/components/dialogs.dart';
 import 'package:responsivity/components/searchfield.dart';
+import 'package:responsivity/config/routes/routesName.dart';
+import 'package:responsivity/features/payment/review_card/review_widget.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class DoctorAppointmentCard extends StatelessWidget {
@@ -21,11 +23,11 @@ class DoctorAppointmentCard extends StatelessWidget {
           children: [
             _buildHeader(),
             Divider(height: 1.h, color: const Color(0xFFE0E0E0)),
-            _buildAppointmentDetails(),
+            buildAppointmentDetails(),
             Divider(height: 1.h, color: const Color(0xFFE0E0E0)),
-            _buildPricingDetails(),
+            buildPricingDetails(),
             Divider(height: 1.h, color: const Color(0xFFE0E0E0)),
-            _buildPaymentMethod(),
+            build_payment_methode(),
           ],
         ),
       ),
@@ -157,102 +159,6 @@ class DoctorAppointmentCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildAppointmentDetails() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-      child: Column(
-        children: [
-          _buildDetailRow('Date / Hour', 'Month 24, Year / 10:00 AM'),
-          SizedBox(height: 12.h),
-          _buildDetailRow('Duration', '30 Minutes'),
-          SizedBox(height: 12.h),
-          _buildDetailRow('Booking for', 'Another Person'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPricingDetails() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-      child: Column(
-        children: [
-          _buildDetailRow('Amount', '\$100.00', valueColor: Colors.black),
-          SizedBox(height: 12.h),
-          _buildDetailRow('Duration', '30 Minutes'),
-          SizedBox(height: 12.h),
-          _buildDetailRow(
-            'Total',
-            '\$100',
-            valueColor: Colors.black,
-            valueFontWeight: FontWeight.w600,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPaymentMethod() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            'Payment Method',
-            style: TextStyle(fontSize: 14.sp, color: const Color(0xFF2196F3)),
-          ),
-          Row(
-            children: [
-              Text(
-                'Card',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Text(
-                'Change',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: const Color(0xFF2196F3),
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDetailRow(
-    String label,
-    String value, {
-    Color? valueColor,
-    FontWeight? valueFontWeight,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: TextStyle(fontSize: 14.sp, color: const Color(0xFF2196F3)),
-        ),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: valueColor ?? Colors.black87,
-            fontWeight: valueFontWeight ?? FontWeight.w400,
-          ),
-        ),
-      ],
     );
   }
 }

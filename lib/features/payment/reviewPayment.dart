@@ -5,7 +5,7 @@ import 'package:responsivity/components/buttons.dart';
 import 'package:responsivity/components/dialogs.dart';
 import 'package:responsivity/components/searchfield.dart';
 import 'package:responsivity/config/routes/routesName.dart';
-import 'package:responsivity/features/payment/review_C.dart';
+import 'package:responsivity/features/payment/review_card/review_C.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class PaymentReview extends StatefulWidget {

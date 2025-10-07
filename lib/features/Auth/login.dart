@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsivity/components/buttons.dart';
 import 'package:responsivity/components/appbar.dart';
+import 'package:responsivity/components/dialogs.dart';
 import 'package:responsivity/components/textfield.dart';
+import 'package:responsivity/config/routes/routesName.dart';
 import 'package:responsivity/utils/theme_extention.dart';
 
 class LoginPage extends StatefulWidget {
@@ -155,9 +158,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Handle login
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Logging in...')),
-                        );
+                        AppDialogs.showLoading(context);
+                        Future.delayed(Duration(seconds: 2), () {
+                          context.pop();
+                          context.go(RouteNames.home_bnv);
+                        });
                       }
                     },
                     width: MediaQuery.of(context).size.width - 180,

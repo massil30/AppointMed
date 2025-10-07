@@ -77,6 +77,7 @@ class _AddCardState extends State<AddCard> {
                       children: [
                         const SizedBox(height: 8),
                         CustomTextField(
+                          maxLines: 1,
                           controller: cvvController,
                           hint: "0000",
                           label: "CVV",

@@ -139,6 +139,7 @@ class _SignUpState extends State<SignUp> {
         hint: "Enter your password",
         keyboardType: TextInputType.visiblePassword,
         obscureText: true,
+        maxLines: 1,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter your password';
@@ -153,6 +154,8 @@ class _SignUpState extends State<SignUp> {
 
       // Confirm Password
       CustomTextField(
+        maxLines: 1,
+
         controller: confirmPasswordController,
         label: "Confirm Password",
         hint: "Re-enter your password",
