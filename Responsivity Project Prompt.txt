@@ -1,0 +1,103 @@
+
+
+At the end get feedback from GPT.
+
+//Setup Project
+Flutte Version : 
+AndroidMinSdkVersion:
+SDK version : 
+Gradle Properities :
+Kotline & Java verion (They should be Compatible withe each other)
+Manifest.kts add internat permission
+IOS TargetSDk
+add internat permission in Info.plist
+
+Add Folder images
+main.dart
+test.dart
+//Shared 
+	- Theme.
+		- Probably i can expend on it more.
+		- Create extension for all cases. (Colors & Font Size)
+	- Language.
+		- I do need to find better way to handdle it
+	- Components 
+		- App Bar
+		- Button (Normal and Outlined)
+		- Dialog
+		- Search field
+		- Text
+			- Create Text component Text.h1('text', Abilty to apply modeficaiton)
+			- I can make it based on Material Design or depends on Platform if IOS (Appel Guidlines) If Android(Materiel 3)
+		- TextField with the ability to customize.
+		- Search Field + Filter.
+		- Reusable Container.
+		- Toast message.
+// Features
+    - Select if the feature im going to devite it in clean Arch
+    - Normal Arc (MVVM)
+    - Auth Feature
+    - Average Profile Structure or Settings
+   . 		-  Profile Bloc Architecture. (Use Logged in or Not)
+    		-  Show Profile Data + Edit Porfile Page.
+    		-  About Us Widget.
+    		-  Logout. (ShowBottomWidget)
+    	-  Featire require has two deffirent sources like. (Local and Online)
+
+// Config
+	- Routes + Routes Names
+	- Connectivity. (Probably i can improve the widget)
+	- Dipendencies.
+	- Responsivity.
+	- Network Manager  
+		- File Reusable Code. (Post / Get / Delete / Update) & Handle all Status
+		- Urls.
+
+// Pages
+	- Splash Screen.
+	- Introduction Pages.
+	- Bottom Navigation Page (Sometimes its not necessary to put Scaffold Twice i think it depend on the  BNB)
+		- Tell What type of Bottom Navigation to find the best package for it. (What about IndexedStack?)
+	- Static pages
+		- Privacy and Policy. (Dialgo.fullscreen)
+		- About us. (Dialgo.fullscreen)
+//Utils
+	- Network I mage Widget.
+	- Padding / Margin / Raduis. (Constans)
+	- Images
+		
+		
+		
+	
+		
+		
+//Packages
+	// Navigation
+		- go_router
+	// Reponsivity & Adaptivity
+		- flutter_screenutil
+		- responsive_framework
+	// Api
+		- connectivity_plus
+		- dio
+		- http
+		- flutter_dotenv (Add it to gitignore file)
+		- shared_preferences
+	//Local Database 
+		- Hive or Izzar or SqfLite.
+	// Design
+		- google_fonts
+		- device_preview
+		- flutter_rating
+		- google_fonts
+		- fluttertoast
+	// State Management 
+		- flutter_bloc
+		- path_provider
+		- equatable
+		- SharedPreferences
+	// App
+		- flutter_localizations //Language
+		- flutter_native_splash 
+		- icon_launcher
+ 
