@@ -1,0 +1,47 @@
+Best prompts that could help while im coading as flutter developer ?
+
+
+// Feature Design (Clean Architecture + Bloc) 
+	- Define events.
+	- Define Stats.
+	- Page (Devide them into widget & use CustomTextField from textfield.dart)
+
+// Add Images
+ 	- add to pubspec.yaml images of folder /images then every go utils/images add them Static Class AppImages
+ 	
+  	
+ // Font
+ 	- Input = Give font Style
+ 		- Auto create all compoents (H1 ,H2 , H3 until Subtitle) in shared/components/text.dart 
+ 		- The final result i want is Text.h1('Hi', With the ability  to customize) By creating extention in text.dart 
+ 		-  Don't forget to use screenUtil package to ensure responsivity.
+ 		-  
+ 	
+ 		
+// Business Requirement
+ - Based on this porject provider
+ 			- the best Light & Dark theme that feet this concept. 
+ 			- the best Font Style that feet this concept.  (Add it to theme)
+ 			- 
+
+
+// Prompt to get the best feedback about my project
+	- Ui 
+		- Selecting Color Pallet.
+		- Share ScreenShot and let them give me UX and Ui feedback. 
+		- Logic behind Adaptivite and responsivity (Rely on Materiel Design 3)
+			- Tell me what i should show if the screen is small & if the screen is big.
+	- File Structure & Naming
+	- Logic
+		- Behind State Management.
+		- Do i handle errors properly?
+		- Im i doing unnecessary request.
+	- Advice to make the code better.
+	- Techniques to Omptimize app Performance.
+	- Provide better packages to make the code less Boilerplate
+		- Extract some Reusable Code to not repeat it twice.
+	- Multi Persona techniques 
+		- As a performance engeneer / Security specialist / Flutter Expert / Flutter Google Expert
+
+// A1 : The right way to write read me 
+	- A2 : Do the Action. (Probably i need to connect MCP server to Claoud or create my own boot)
